@@ -1,0 +1,7 @@
+"# magnum_django_app" 
+"# magnum_django_app" 
+"# magnum_django_app" 
+"# magnum_django_app" 
+"# magnum_django_app" 
+"# magnum_django_app" 
+"# magnum_django_app" 
