@@ -1,0 +1,126 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="detail">
+  <h1>{{ post.title }}</h1>
+  <p class="date">
+    Published {{ post.publish }} by {{ post.author }}
+  </p>
+  <div class="detail-text">
+    <div class="thumbnail-det">
+      <a href="{{ post.get_photo_url }}">
+        <div class="image-dt">
+        <img  id="dt" src="{{ post.get_photo_url }}" class="img-responsive thumbnail " alt="img">
+        </div>
+        {% comment %} <div class="caption">
+          <p>{{ post.title }}</p>
+        </div> {% endcomment %}
+      </a>
+     
+</div>
+  {{ post.body|linebreaks }}
+  </div>
+  <div id="similar">
+    <h2>Similar posts</h2>
+  {% for post in similar_posts %}
+  <p>
+  <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+  </p>
+  {% empty %}
+  There are no similar posts yet.
+  {% endfor %}
+
+  </div>
+  <div class="comment-detail">
+      {% with comments.count as total_comments %}
+    <h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+    </h2>
+    {% endwith %}
+    {% for comment in comments %}
+    <div class="comment">
+    <p class="info">
+    Comment {{ forloop.counter }} by {{ comment.name }}
+    {{ comment.created }}
+    </p>
+    {{ comment.body|linebreaks }}
+    </div>
+    {% empty %}
+    <p>There are no comments yet.</p>
+    {% endfor %}
+    {% if new_comment %}
+    <h2>Your comment has been added.</h2>
+    {% else %}
+  
+    <div class="pst">
+    <form method="post">
+   
+    {% comment %} {{ comment_form.as_p }}  {% endcomment %}
+    <section class="contact-us">
+      <div class="container">
+        <div class="row">
+        
+          <div class="col-lg-12">
+            <div class="down-contact">
+              <div class="row">
+                <div class="col-lg-8">
+                  <div class="sidebar-item contact-form">
+                    <div class="sidebar-heading">
+                      <h2 id="newcomment">ADD A NEW COMMENT</h2>
+                    </div>
+                    <div class="content">
+                      <form id="contact" action="" method="post">
+                        <div class="row">
+                          <div class="col-md-6 col-sm-12">
+                           
+                              <fieldset>
+                                <p>NAME:</p>
+                                {{ comment_form.name}}
+                              {% comment %} <input name="name" type="text" id="name"  placeholder="Your name" required=""> {% endcomment %}
+                            </fieldset>
+                          </div>
+                          <div class="col-md-6 col-sm-12">
+                            <fieldset>
+                              <p>EMAIL:</p>
+                              {{ comment_form.email}}
+                              {% comment %} <input name="email" type="text" id="email" placeholder="Your email" required=""> {% endcomment %}
+                            </fieldset>
+                          </div>
+                          
+                          <div class="col-lg-12">
+                             <fieldset>
+                              <p>MESSAGE:</p>
+                              {{ comment_form.body}}
+                              {% comment %} <textarea name="message" rows="6" id="message" placeholder="Your Message" required=""></textarea> {% endcomment %}
+                            </fieldset>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          
+          {% comment %} <div class="col-lg-12">
+            <div id="map">
+              <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="450px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+          </div> {% endcomment %}
+          
+        </div>
+      </div>
+     
+    {% csrf_token %}
+    <p><input class="cmt-dets" type="submit" value="Add comment"></p>
+    </form>
+  </div>
+  
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
