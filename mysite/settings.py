@@ -35,6 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'cloudinary',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -146,6 +149,8 @@ USE_TZ = True
 # ),
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
@@ -161,15 +166,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 cloudinary.config(
-    cloud_name = 'leeeeee',
-    api_key = '256991214265448',
-    api_secret = 'CGkLGVZ88rw7TNlCHdXXhxj2QkU'
+    cloud_name = os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key = os.getenv("CLOUDINARY_API_KEY"),
+    api_secret = os.getenv("CLOUDINARY_API_SECRET"),
 )
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'leeeeee',
-    'API_KEY' : '256991214265448',
-    'API_SECRET' : 'CGkLGVZ88rw7TNlCHdXXhxj2QkU'
+CLOUDINARY_= {
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY' : os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET' : os.getenv('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
