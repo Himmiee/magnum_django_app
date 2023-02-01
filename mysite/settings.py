@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
  'default': dj_database_url.parse(os.getenv("DB_URL"))
 }
+
 # DATABASES = {
 #  'default': {
 #     'ENGINE': os.getenv("ENGINE"),
