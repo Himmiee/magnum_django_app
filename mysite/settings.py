@@ -15,6 +15,7 @@ from dotenv import find_dotenv, load_dotenv
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 
 load_dotenv(find_dotenv())
 
@@ -86,15 +87,18 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 DATABASES = {
- 'default': {
-    'ENGINE': os.getenv("ENGINE"),
-    'NAME': os.getenv("NAME"),
-    'USER': os.getenv("USER"),
-    'PASSWORD': os.getenv("PASSWORD"),
-    'HOST':os.getenv("HOST"),
-    'PORT': os.getenv("PORT"),
-    }
+ 'default': dj_database_url.parse(os.getenv("DB_URL"))
 }
+# DATABASES = {
+#  'default': {
+#     'ENGINE': os.getenv("ENGINE"),
+#     'NAME': os.getenv("NAME"),
+#     'USER': os.getenv("USER"),
+#     'PASSWORD': os.getenv("PASSWORD"),
+#     'HOST':os.getenv("HOST"),
+#     'PORT': os.getenv("PORT"),
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
