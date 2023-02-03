@@ -49,12 +49,13 @@ h4 {
   color: #f48840 !important;
 }
 
-.thumbnail {
+.thumbnail img {
   width: 300px;
-  height: fit-content;
+  height: 230px;
   border-radius: 10px;
   /* border: 2px solid #f48840; */
-
+  display: block;
+  object-fit: cover;
   padding: 0;
   /* flex: -10; */
 }
