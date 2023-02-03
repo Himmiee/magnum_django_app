@@ -26,7 +26,7 @@ h2 {
 }
 
 #msg{
-  margin-top: 40px;
+  margin-top: 70px;
 }
 h4 {
   display: flex;
@@ -48,10 +48,13 @@ h4 {
 .active {
   color: #f48840 !important;
 }
-
-.thumbnail {
+#im{
+  display: block;
+  object-fit: cover;
+}
+.thumbnail img {
   width: 300px;
-  height: fit-content;
+  height: 230px;
   border-radius: 10px;
   /* border: 2px solid #f48840; */
 
@@ -64,6 +67,8 @@ h4 {
   grid-template-columns: 1fr 5fr;
   gap: 40px;
   padding: 20px 10%;
+  margin-top: 20px;
+  /* height: 230px; */
   max-width: 1350px;
   /* grid-template-rows: 350px 50px; */
 }
@@ -163,6 +168,9 @@ p.date {
 #dt {
   border-radius: 10px;
   border: none;
+  display: block;
+  height: 50%;
+  margin: 0px;
 }
 
 /* forms */
