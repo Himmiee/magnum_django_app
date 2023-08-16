@@ -93,16 +93,16 @@ DATABASES = {
  'default': dj_database_url.parse(os.getenv("DB_URL"))
 }
 
-# DATABASES = {
-#  'default': {
-#     'ENGINE': os.getenv("ENGINE"),
-#     'NAME': os.getenv("NAME"),
-#     'USER': os.getenv("USER"),
-#     'PASSWORD': os.getenv("PASSWORD"),
-#     'HOST':os.getenv("HOST"),
-#     'PORT': os.getenv("PORT"),
-#     }
-# }
+DATABASES = {
+ 'default': {
+    'ENGINE': os.getenv("ENGINE"),
+    'NAME': os.getenv("NAME"),
+    'USER': os.getenv("USER"),
+    'PASSWORD': os.getenv("PASSWORD"),
+    'HOST':os.getenv("HOST"),
+    'PORT': os.getenv("PORT"),
+    }
+}
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
