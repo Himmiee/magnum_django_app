@@ -89,20 +89,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
-# DATABASES = {
-#  'default': dj_database_url.parse(os.getenv("DB_URL"))
-# }
-
 DATABASES = {
- 'default': {
-    'ENGINE': os.getenv("ENGINE"),
-    'NAME': os.getenv("NAME"),
-    'USER': os.getenv("USER"),
-    'PASSWORD': os.getenv("PASSWORD"),
-    'HOST':os.getenv("HOST"),
-    'PORT': os.getenv("PORT"),
-    }
+ 'default': dj_database_url.parse(os.getenv("DB_URL"))
 }
+
+# DATABASES = {
+#  'default': {
+#     'ENGINE': os.getenv("ENGINE"),
+#     'NAME': os.getenv("NAME"),
+#     'USER': os.getenv("USER"),
+#     'PASSWORD': os.getenv("PASSWORD"),
+#     'HOST':os.getenv("HOST"),
+#     'PORT': os.getenv("PORT"),
+#     }
+# }
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
